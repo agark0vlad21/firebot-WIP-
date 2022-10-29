@@ -6,18 +6,7 @@ from async_eval import eval
 from colorama import init
 init()
 
-if not glob.glob("*.session"):
-    print("Not found session file, entering to setup")
-    print("Enter api id")
-    api_id = int(input())
-    print("Enter api hash")
-    api_hash = input()
-
-    app = Client("firebot", api_id=api_id, api_hash=api_hash)
-
-    app.run()
-    app.stop()
-
+  
 def welcome():
     print(" _____ _          ____        _ ")
     print("|  ___(_)_ __ ___| __ )  ___ | |_")
@@ -38,18 +27,3 @@ def welcome():
             print(f"Can't import {module}")
 
 welcome()
-
-
-
-
-
-
-
-
-#async def main():
-#    async with Client("my_account", api_id, api_hash) as app:
-#        await app.send_message("me", "Greetings from **Pyrogram**!")
-
-#asyncio.run(main())
-
-
