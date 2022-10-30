@@ -1,6 +1,8 @@
-import asyncio, sys
+import sys, os
 from pyrogram import Client
 from pyrogram.handlers import MessageHandler
+
+
 
 
 if not glob.glob("*.session"):
@@ -10,20 +12,29 @@ if not glob.glob("*.session"):
     print("Enter api hash")
     api_hash = input()
 
-app = Client("my_account")
+
+def send_message(chat, message):
+    with Client(session, api_id, api_hash) as app:
+        app.send_message(chat, message)
+
+def send_photo(chat, photo):
+    with Client(session, api_id, api_hash) as app:
+        app.send_photo(chat, photo)
+
+def send_photo(chat, photo):
+    with Client(session, api_id, api_hash) as app:
+        app.send_photo(chat, photo)
+
+def send_document(chat, document):
+    with Client(session, api_id, api_hash) as app:
+        app.send_document(chat, document)
 
 
-async def sendmessage(chat, text):
-    await app.start()
-    await app.send_message(chat, text)
-    await app.stop()
+@app.on_message()
+def my_handler(client, message):
+    print(message)
+    exit()
 
-
-def send_text_message(chat, text):
-    try:
-        app.run(sendmessage(chat, text))
-        print("sent!")
-    except:
-        print("not sent:(")
-
+def run_handler():
+    app.run()
 
